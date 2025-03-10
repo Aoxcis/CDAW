@@ -6,8 +6,11 @@
 </head>
 <body>
   <p>
+    <h1>Exo 01 - PHP</h1>
+    <h2>Heure actuelle</h2>
     <?php
-      echo date('H:i');;
+    date_default_timezone_set('Europe/Paris');
+      echo date('H:i');
     ?>
   </p>
 </body>

@@ -1,6 +1,6 @@
 <?php
 define('__ROOT_DIR', dirname(dirname(__DIR__)));
-require_once __ROOT_DIR . '/model/Response.php';
+require_once __ROOT_DIR . '/tp2/controller/Response.php';
 
 /**
  * Base Controller class for handling API requests

@@ -69,10 +69,10 @@ switch($controllerName) {
             exit();
         }
         break;
-    case 'login' :
-        // POST api.php?/login
-        $controller = new loginController($this->name, $requestMethod);
-        break;
+        case 'login' :
+            // POST api.php?/login
+            $controller = new LoginController($requestMethod); // Fix capitalization (loginController -> LoginController)
+            break;
     default :
         header("HTTP/1.1 404 Not Found");
         exit();

@@ -1,5 +1,5 @@
 <?php
-require "config.php";
+require_once "config.php";
 
 // simplest auto loader cf. doc PHP
 // we will revisit that later

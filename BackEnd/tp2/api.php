@@ -68,6 +68,10 @@ switch($controllerName) {
             exit();
         }
         break;
+    case 'login' :
+        // POST api.php?/login
+        $controller = new AuthController($requestMethod);
+        break;
     default :
         header("HTTP/1.1 404 Not Found");
         exit();

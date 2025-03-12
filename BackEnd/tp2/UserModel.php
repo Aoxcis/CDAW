@@ -5,6 +5,7 @@ class UserModel
     protected $id;
     protected $name;
     protected $email;
+    protected $password;
 
     public function getId() {
         return $this->id;

@@ -1,4 +1,5 @@
 <?php
+define('__ROOT_DIR', dirname(dirname(__DIR__)));
 include_once __ROOT_DIR . '/libs/php-jwt/src/BeforeValidException.php';
 include_once __ROOT_DIR . '/libs/php-jwt/src/ExpiredException.php';
 include_once __ROOT_DIR . '/libs/php-jwt/src/SignatureInvalidException.php';
@@ -21,7 +22,8 @@ class LoginController extends Controller {
          return new Response(422, "login and pwd fields are mandatory");
       }
 
-      $user = User::tryLogin($json->login);
+      $userModel = new UserModel();
+      $user = $userModel->tryLogin($json->login);
       if(empty($user) || !hash_equals($json->pwd, $user->password())) {
          return new Response(422, "wrong credentials");
       }

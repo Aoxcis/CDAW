@@ -1,5 +1,6 @@
 <?php
 require_once "bootstrap.php";
+require_once "controller/loginController.php";
 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
 header("Access-Control-Allow-Origin: *");
@@ -70,7 +71,7 @@ switch($controllerName) {
         break;
     case 'login' :
         // POST api.php?/login
-        $controller = new AuthController($requestMethod);
+        $controller = new loginController($this->name, $requestMethod);
         break;
     default :
         header("HTTP/1.1 404 Not Found");

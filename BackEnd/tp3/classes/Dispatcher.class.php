@@ -14,5 +14,17 @@ class Dispatcher {
       // TODO
       // une requête GET /users doit retourner new UsersController($controllerName, $request)
       // une requête GET /user/1 doit retourner new UserController($controllerName, $request)
+
+		if($controllerName == 'users'){
+			return new UsersController($controllerName, $request);
+		}
+
+		if($controllerName == 'user'){
+			return new UserController($controllerName, $request);
+		}
+
+		else{
+			return new DefaultController($controllerName, $request);
+		}
 	}
 }

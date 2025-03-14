@@ -7,6 +7,7 @@ class Request {
 
     public static function getCurrentRequest(){
        // TODO
+      return new Request();
     }
 
    public function __construct() {
@@ -37,20 +38,27 @@ class Request {
    // on peut voir que
    // $_SERVER['SCRIPT_NAME'] donne le préfixe
    // et que parse_url($_SERVER['REQUEST_URI']
-   protected function initControllerAndParametersFromURI(){
-
-      if(isset($_SERVER['REQUEST_URI'])){
-         $uri = $_SERVER['REQUEST_URI'];
-         $uri = str_replace($this->baseURI, '', $uri);
-         $uri = trim($uri, '/');
-         $uri = explode('/', $uri);
-         $this->controllerName = $uri[0];
-         $this->uriParameters = array_slice($uri, 1);
-      }
-      else{
+   protected function initControllerAndParametersFromURI() {
+      if (isset($_SERVER['PATH_INFO']) && !empty($_SERVER['PATH_INFO'])) {
+         // PATH_INFO already contains the path after the script name ("/users")
+         $path = trim($_SERVER['PATH_INFO'], '/');
+         $parts = explode('/', $path);
+         
+         if (!empty($parts[0])) {
+            $this->controllerName = $parts[0];
+            $this->uriParameters = array_slice($parts, 1);
+         } else {
+            $this->controllerName = 'default';
+            $this->uriParameters = [];
+         }
+      } else {
          $this->controllerName = 'default';
          $this->uriParameters = [];
       }
+      
+      // For debugging
+      // error_log("Controller: " . $this->controllerName);
+      // error_log("Parameters: " . print_r($this->uriParameters, true));
    }
 
    // ==============

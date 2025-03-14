@@ -1,6 +1,6 @@
 <?php
 
-class UsersController extends Controller {
+class UserController extends Controller {
 
 	public function __construct($name, $request) {
 		parent::__construct($name, $request);
@@ -19,7 +19,6 @@ class UsersController extends Controller {
     protected function getAllUsers()
     {
         $users = User::getList();
-        // TODO
         $response = Response::okResponse($users);
         return $response;
     }

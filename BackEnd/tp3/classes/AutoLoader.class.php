@@ -30,10 +30,6 @@ class AutoLoader {
         } else {
             die("Class $className not found");
         }
-
-        
-
-
     }
 }
 

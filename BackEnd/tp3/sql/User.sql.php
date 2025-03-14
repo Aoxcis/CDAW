@@ -14,3 +14,6 @@ User::addSqlQuery('USER_CONNECT',
 
 User::addSqlQuery('USER_GET_BY_ID',
 	'SELECT * FROM USERS WHERE USER_ID=:id');
+
+User::addSqlQuery('USER_UPDATE',
+	'UPDATE USERS SET USER_LOGIN=:login, USER_EMAIL=:email, USER_PWD=:pwd, USER_NAME=:name WHERE USER_ID=:id');

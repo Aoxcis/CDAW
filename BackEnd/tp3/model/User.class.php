@@ -19,4 +19,9 @@ class User extends Model {
       $user = $stm->fetch();
       return $user->props;
    }
+
+   public static function update($data) {
+      $stm = parent::exec('USER_UPDATE', $data);
+      return $stm->rowCount();
+   }
 }

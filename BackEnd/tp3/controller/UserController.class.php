@@ -18,8 +18,11 @@ class UserController extends Controller {
 
     protected function getAllUsers()
     {
-        $users = User::getList();
-        $response = Response::okResponse($users);
+        $users = User::getUserById($this->request->getParams()[0]);
+        if($users == null){
+            return Response::errorResponse("User not found");
+        }
+        $response = Response::okResponse(json_encode($users));
         return $response;
     }
 }

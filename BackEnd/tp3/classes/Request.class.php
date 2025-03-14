@@ -6,7 +6,6 @@ class Request {
    protected $baseURI;
 
     public static function getCurrentRequest(){
-       // TODO
       return new Request();
     }
 
@@ -75,4 +74,7 @@ class Request {
       return $_SERVER["REQUEST_METHOD"];
    }
 
+   public function getParams() {
+      return $this->uriParameters;
+   }
 }

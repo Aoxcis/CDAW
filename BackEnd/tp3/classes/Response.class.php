@@ -57,6 +57,6 @@ class Response {
       http_response_code($this->code);
       ob_get_clean();
       echo $this->body;
-      exit; // do we keep that?
+      exit;
    }
 }

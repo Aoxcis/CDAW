@@ -7,6 +7,16 @@ class User extends Model {
    // load all users from Db
    public static function getList() {
       $stm = parent::exec('USER_LIST');
-      return $stm->fetchAll();
+      $users = $stm->fetchAll();
+
+      return array_map(function($user) {
+         return $user->props;
+      }, $users);
+   }
+
+   public static function getUserById($id) {
+      $stm = parent::exec('USER_GET_BY_ID', array('id' => $id));
+      $user = $stm->fetch();
+      return $user->props;
    }
 }

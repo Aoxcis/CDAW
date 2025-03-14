@@ -19,8 +19,9 @@ class UsersController extends Controller {
     protected function getAllUsers()
     {
         $users = User::getList();
-        // TODO
-        $response = Response::okResponse($users);
+
+        
+        $response = Response::okResponse(json_encode($users));
         return $response;
     }
 }

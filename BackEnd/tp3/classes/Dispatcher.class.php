@@ -20,6 +20,8 @@ class Dispatcher {
 		}
 
 		if($controllerName == 'user'){
+			var_dump($controllerName);
+			var_dump($request);
 			return new UserController($controllerName, $request);
 		}
 
